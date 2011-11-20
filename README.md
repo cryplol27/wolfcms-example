@@ -34,8 +34,8 @@ Then push the repo upstream
 
 That's it, you can now checkout your application at (default admin account is admin/admin):
 
-    http://wolfcms-$your_domain.rhcloud.com
-    http://wolfcms-$your_domain.rhcloud.com/admin for WolfCMS Administration
+    http://wolfcms-$yournamespace.rhcloud.com
+    http://wolfcms-$yournamespace.rhcloud.com/admin for WolfCMS Administration
 
 
 
