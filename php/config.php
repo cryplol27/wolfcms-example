@@ -6,9 +6,9 @@
 // For more info look at: www.php.net/pdo
 
 // Database settings:
-define('DB_DSN', 'mysql:dbname=wolfcms;host=' . $_ENV['OPENSHIFT_DB_HOST'] . ';port=' . $_ENV['OPENSHIFT_DB_PORT']);
-define('DB_USER', $_ENV['OPENSHIFT_DB_USERNAME']);
-define('DB_PASS', $_ENV['OPENSHIFT_DB_PASSWORD']);
+define('DB_DSN', 'mysql:dbname=wolfcms;host=' . $_ENV['OPENSHIFT_MYSQL_DB_HOST'] . ';port=' . $_ENV['OPENSHIFT_MYSQL_DB_PORT']);
+define('DB_USER', $_ENV['OPENSHIFT_MYSQL_DB_USERNAME']);
+define('DB_PASS', $_ENV['OPENSHIFT_MYSQL_DB_PASSWORD']);
 define('TABLE_PREFIX', '');
 
 // Should Wolf produce PHP error messages for debugging?
