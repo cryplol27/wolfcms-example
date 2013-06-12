@@ -17,12 +17,14 @@ then
 fi
 
 # Confirm database exists, if not create it
-if ! /usr/bin/mysql -u "$OPENSHIFT_MYSQL_DB_USERNAME" --password="$OPENSHIFT_MYSQL_DB_PASSWORD" -h "$OPENSHIFT_MYSQL_DB_HOST" -e "select * from user;" wolfcms > /dev/null 2>&1
+if ! /usr/bin/mysql -u "$OPENSHIFT_MYSQL_DB_USERNAME" --password="$OPENSHIFT_MYSQL_DB_PASSWORD" -h "$OPENSHIFT_MYSQL_DB_HOST" -e "select * from user;" $OPENSHIFT_APP_NAME > /dev/null 2>&1
 then
     echo
     echo "Database schema not found, importing 'wolfcms.sql' schema."
     echo
-    /usr/bin/mysql -u "$OPENSHIFT_MYSQL_DB_USERNAME" --password="$OPENSHIFT_MYSQL_DB_PASSWORD" -h "$OPENSHIFT_MYSQL_DB_HOST" "$OPENSHIFT_APP_NAME" < "$OPENSHIFT_REPO_DIR/.openshift/action_hooks/wolfcms.sql"
+    # Need to rename the database to match our application name
+    cat "$OPENSHIFT_REPO_DIR/.openshift/action_hooks/wolfcms.sql" | sed -e s/\`wolfcms\`/\`$OPENSHIFT_APP_NAME\`/  | \
+      /usr/bin/mysql -u "$OPENSHIFT_MYSQL_DB_USERNAME" --password="$OPENSHIFT_MYSQL_DB_PASSWORD" -h "$OPENSHIFT_MYSQL_DB_HOST" "$OPENSHIFT_APP_NAME"
     echo
     echo "done."
     echo "=================================================="
