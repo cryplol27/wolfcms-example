@@ -20,7 +20,7 @@ Create a php application with mysql (you can call your application whatever you 
 Add this upstream wolfcms repo
 
     cd wolfcms
-    git remote add upstream -m master git://github.com/openshift/wolfcms-example.git
+    git remote add upstream -m master git://github.com/openshift-quickstart/wolfcms-example.git
     git pull -s recursive -X theirs upstream master
     # note that the git pull above can be used later to pull updates to WolfCMSs
     
